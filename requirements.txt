@@ -1,3 +1,12 @@
 opencv-python
 numpy
-scipynumba
+scipy
+numba
+pandas
+seaborn
+tqdm
+ultralytics
+# torch and torchvision: install the CUDA build first, matching your GPU driver, e.g. (CUDA 12.8, as used here):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+torch
+torchvision
