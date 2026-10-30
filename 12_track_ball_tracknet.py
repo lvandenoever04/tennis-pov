@@ -109,7 +109,11 @@ for k in range(n):
         colour = (0, 0, 255) if source[k] == 1 else (255, 0, 255)
         cv2.circle(frame, tuple(ball[k].astype(int)), 14, colour, 2, cv2.LINE_AA)
     label = {0: "no ball", 1: "ball", 2: "ball (filled in)"}[source[k]]
-    cv2.putText(frame, f"frame {first + k}  {label}", (20, 1050), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2)
+    text = f"frame {first + k}  {label}"
+    (tw, th), _ = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 1.4, 3)
+    x0 = (w - tw) // 2                                           # centred horizontally
+    cv2.rectangle(frame, (x0 - 12, 18), (x0 + tw + 12, 30 + th + 12), (0, 0, 0), -1)
+    cv2.putText(frame, text, (x0, 30 + th), cv2.FONT_HERSHEY_SIMPLEX, 1.4, (255, 255, 255), 3, cv2.LINE_AA)
     writer.stdin.write(frame.tobytes())
 writer.stdin.close()
 writer.wait()
