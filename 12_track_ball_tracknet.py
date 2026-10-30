@@ -13,8 +13,8 @@ n = last - first + 1
 
 # Use the TrackNet repo's own model definition and post-processing.
 sys.path.insert(0, os.path.expanduser("~/projects/TrackNet"))
-from model import BallTrackerNet
-from general import postprocess
+from model import BallTrackerNet    # type: ignore
+from general import postprocess     # type: ignore
 
 NET_W, NET_H = 640, 360     # the network works on frames shrunk to this size
 OUTLIER = 150               # px: a detection this far from BOTH neighbours is treated as a mistake
